@@ -37,6 +37,7 @@
 #import "Appirater.h"
 #import <SystemConfiguration/SCNetworkReachability.h>
 #import <FUIAlertView.h>
+#import <UIColor+FlatUI.h>
 #include <netinet/in.h>
 
 #if ! __has_feature(objc_arc)
