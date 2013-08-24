@@ -85,12 +85,12 @@ extern NSString *const kAppiraterReminderRequestDate;
  */
 #define APPIRATER_RATE_LATER			NSLocalizedStringFromTable(@"Remind me later", @"AppiraterLocalizable", nil)
 
-@interface Appirater : NSObject <UIAlertViewDelegate, SKStoreProductViewControllerDelegate> {
+@interface Appirater : NSObject <FUIAlertViewDelegate, SKStoreProductViewControllerDelegate> {
 
-	UIAlertView		*ratingAlert;
+	FUIAlertView		*ratingAlert;
 }
 
-@property(nonatomic, strong) UIAlertView *ratingAlert;
+@property(nonatomic, strong) FUIAlertView *ratingAlert;
 #if __has_feature(objc_arc_weak)
 @property(nonatomic, weak) NSObject <AppiraterDelegate> *delegate;
 #else

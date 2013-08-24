@@ -36,6 +36,7 @@
 
 #import "Appirater.h"
 #import <SystemConfiguration/SCNetworkReachability.h>
+#import <FUIAlertView.h>
 #include <netinet/in.h>
 
 #if ! __has_feature(objc_arc)
@@ -167,13 +168,31 @@ static BOOL _modalOpen = false;
 	return appirater;
 }
 
+- (void)configureFlatAlert:(FUIAlertView *)alert
+{
+    alert.titleLabel.textColor = [UIColor cloudsColor];
+    alert.titleLabel.font = [UIFont boldFlatFontOfSize:16];
+    alert.messageLabel.textColor = [UIColor cloudsColor];
+    alert.messageLabel.font = [UIFont flatFontOfSize:14];
+    alert.backgroundOverlay.backgroundColor = [[UIColor darkGrayColor] colorWithAlphaComponent:0.4];
+    alert.alertContainer.backgroundColor = [UIColor midnightBlueColor];
+    alert.defaultButtonColor = [UIColor cloudsColor];
+    alert.defaultButtonShadowColor = [UIColor asbestosColor];
+    alert.defaultButtonFont = [UIFont boldFlatFontOfSize:16];
+    alert.defaultButtonTitleColor = [UIColor asbestosColor];
+}
+
 - (void)showRatingAlert {
-	UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:APPIRATER_MESSAGE_TITLE
+	FUIAlertView *alertView = [[FUIAlertView alloc] initWithTitle:APPIRATER_MESSAGE_TITLE
 														 message:APPIRATER_MESSAGE
 														delegate:self
 											   cancelButtonTitle:APPIRATER_CANCEL_BUTTON
 											   otherButtonTitles:APPIRATER_RATE_BUTTON, APPIRATER_RATE_LATER, nil];
+    
+    
 	self.ratingAlert = alertView;
+    [self configureFlatAlert:alertView];
+    
     [alertView show];
 
     id <AppiraterDelegate> delegate = _delegate;
@@ -475,7 +494,7 @@ static BOOL _modalOpen = false;
 	}
 }
 
-- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+- (void)alertView:(FUIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
 	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
     id <AppiraterDelegate> delegate = _delegate;
