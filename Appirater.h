@@ -37,6 +37,7 @@
 #import <Foundation/Foundation.h>
 #import "AppiraterDelegate.h"
 #import <StoreKit/StoreKit.h>
+#import <FUIAlertView.h>
 
 extern NSString *const kAppiraterFirstUseDate;
 extern NSString *const kAppiraterUseCount;
